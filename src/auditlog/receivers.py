@@ -40,11 +40,14 @@ def log_update(sender, instance, **kwargs):
 
             # Log an entry only if there are changes
             if changes:
-                log_entry = LogEntry.objects.log_create(
-                    instance,
-                    action=LogEntry.Action.UPDATE,
-                    changes=json.dumps(changes),
-                )
+                try:
+                    log_entry = LogEntry.objects.log_create(
+                        instance,
+                        action=LogEntry.Action.UPDATE,
+                        changes=json.dumps(changes),
+                    )
+                except:
+                    pass
 
 
 def log_delete(sender, instance, **kwargs):
