@@ -20,7 +20,7 @@ def log_create(sender, instance, created, **kwargs):
                 action=LogEntry.Action.CREATE,
                 changes=json.dumps(changes),
             )
-        except
+        except:
             pass
 
 
